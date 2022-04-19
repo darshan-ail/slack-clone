@@ -1,0 +1,19 @@
+.sidebar {
+    background-color: var(--slack-color);
+    border-top: 1px solid #49274b;
+    max-width: 260px;
+    color: white;
+}
+
+.header {
+    display: flex;
+    border-bottom: 1px solid #49274b;
+    padding-bottom: 10px;
+    padding: 13px;
+}
+
+.pencilIcon {
+    padding: 8px;
+    color: #49274b;
+    font-size: 18px;
+}
