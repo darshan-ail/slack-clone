@@ -40,7 +40,7 @@ const Sidebar = props => {
             <hr />
             <SidebarOptions Icon={ExpandMoreSharp} title="Channel" />
             <hr />
-            <SidebarOptions Icon={AddOutlined} title="Add Channel" />
+            <SidebarOptions Icon={AddOutlined} title="Add Channel" addChannelOption />
             {channels.map(channel => (
                 <SidebarOptions id={channel.id} title={channel.name} />
             ))}
