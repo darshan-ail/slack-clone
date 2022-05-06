@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import style from "../styles/sidebarOptions.module.css";
+import db from "../config/firebase";
 
 const SidebarOptions = ({ Icon, title, id, addChannelOption }) => {
     let navigate = useNavigate();
@@ -9,13 +10,17 @@ const SidebarOptions = ({ Icon, title, id, addChannelOption }) => {
         if (id) {
             navigate(`/room/${id}`);
         } else {
-            <Link to={title} />
+            navigate(`${title}`);
         }
     }
 
     const addChannel = () => {
-        if (id) {
-            <Link to="/expenses">Expenses</Link>
+        const channelName = prompt('Please enter the channel name');
+
+        if (channelName) {
+            db.collection('rooms').add({
+                name: channelName
+            })
         }
     }
 
