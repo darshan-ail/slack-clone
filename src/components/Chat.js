@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Message from "./Message";
-import style from "../styles/chat.module.css"
+import style from "../styles/chat.module.css";
 import { useParams } from "react-router-dom";
 import { StarBorderOutlined, InfoOutlined } from "@material-ui/icons";
 import db from "../config/firebase";
@@ -12,9 +12,9 @@ const Chat = props => {
 
     useEffect(() => {
         if (roomId) {
-            // db.collection('rooms').doc(roomId).onSnapshot(snap => (
-            //     setRoomDetails(snap.data())
-            // ))
+            db.collection('rooms').doc(roomId).onSnapshot(snap => (
+                setRoomDetails(snap.data())
+            ))
             db.collection('rooms')
                 .doc(roomId)
                 .onSnapshot((doc) => {
