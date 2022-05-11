@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Message from "./Message";
+import ChatInput from "./ChatInput";
 import style from "../styles/chat.module.css";
 import { useParams } from "react-router-dom";
 import { StarBorderOutlined, InfoOutlined } from "@material-ui/icons";
@@ -65,6 +66,7 @@ const Chat = props => {
                     />
                 ))}
             </div>
+            <ChatInput channelName={roomDetails?.name} channelId={roomId} />
         </div>
     )
 }

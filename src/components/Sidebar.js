@@ -4,9 +4,11 @@ import style from "../styles/sidebar.module.css";
 import InsertCommentSharp from "@material-ui/icons/InsertCommentSharp";
 import SidebarOptions from "./SidebarOptions";
 import db from "../config/firebase";
+import { useStateValue } from "../datalayer/StateProvider";
 
 const Sidebar = props => {
     const [channels, setChannels] = useState([]);
+    const [{ user }] = useStateValue();
 
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => {
@@ -24,7 +26,7 @@ const Sidebar = props => {
                     <h2>Organization</h2>
                     <h3>
                         <FiberManualRecordRounded className={style.onlineIcon} />
-                        Darshan Ail
+                        {user?.displayName}
                     </h3>
                 </div>
                 <Create className={style.pencilIcon} />

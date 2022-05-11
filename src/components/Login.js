@@ -1,14 +1,21 @@
 import React from "react";
 import style from "../styles/login.module.css";
 import { Button } from "@material-ui/core";
+import { useStateValue } from "../datalayer/StateProvider";
 import { auth, provider } from "../config/firebase";
+import { actionTypes } from "../datalayer/reducer";
 
 const Login = props => {
+    const [state, dispatch] = useStateValue();
 
     const signIn = () => {
         auth.signInWithPopup(provider)
             .then(result => {
                 console.log(result);
+                dispatch({
+                    type: actionTypes.SET_USER,
+                    user: result.user
+                })
             })
             .catch(error => {
                 alert(error.message);
